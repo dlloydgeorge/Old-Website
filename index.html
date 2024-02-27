@@ -3,13 +3,55 @@
 <body>
 <h1>Hello World</h1>
 <p>This is DLG's personal website. It is still a work in progress so give it some time. I may add some experimental features in HTML and Javascript.</p>
-<button onclick='f();'>Click Me!</button>  <!-- button element. When clicked, it triggers the function 'f' -->
-<script>                                          // JavaScript code starts here.
-  var mh = document.getElementById('myHeader'); // Getting the h1 element with the id 'myHeader' and storing it in the variable 'mh'.
-  mh.innerHTML = 'Hello World!';                // Setting the inner HTML of the 'mh' element to 'Hello World!'.
-  function f() {                                // Defining a function named 'f'.   
-    mh.innerHTML = 'Bybye world!';            // When function 'f' is called, it changes the inner HTML of 'mh' to 'Bybye world!'.
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Animation with Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
         }
-</script>
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create arrow geometry
+        const arrowGeometry = new THREE.ConeGeometry(0.1, 0.5, 32);
+        const arrowMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
+        scene.add(arrow);
+
+        // Position the arrow
+        arrow.position.z = -5;
+
+        // Animate the arrow
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the arrow
+            arrow.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        // Set up the camera position
+        camera.position.z = 5;
+
+        // Start the animation
+        animate();
+    </script>
 </body>
 </html>
