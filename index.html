@@ -4,7 +4,30 @@
 <h1> DLG Website</h1>
 <p>This is DLG's personal website. It is still a work in progress so give it some time. I may add some experimental features in HTML and Javascript.</p>
 
+// MathJax importing/configuring
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>   
+
 <h1> QuDeco Game Dev </h1>
+<p>
+    This is a game designed to illustrate how dynamical decoupling (sequences of pulses) can reduce decoherence in a qubit and extend its lifetime.
+    A qubit is the fundamental unit of quantum computation, analagous to a bit in classical computation. It is represented by a two state quantum system. 
+    An arbitary state of a qubit can be represented by a statevector of the following form: \\
+    \( \ket{\psi} = \alpha \ket{0} + \beta \ket{1}\)
+    
+    
+</p>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
