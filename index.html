@@ -20,33 +20,61 @@ MathJax = {
 
 <h1> QuDeco Game Dev </h1>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrow Animation with Three.js</title>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
-        canvas {
-            display: block;
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #threeCanvas {
+            width: 70%;
+            height: 100%;
+        }
+        #buttonsContainer {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
+    <div id="container">
+        <div id="threeCanvas"></div>
+        <div id="buttonsContainer">
+            <button onclick="toggleAnimation()">Toggle Animation</button>
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Set up the scene, camera, and renderer
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+        renderer.setSize(window.innerWidth * 0.7, window.innerHeight);
+        document.getElementById('threeCanvas').appendChild(renderer.domElement);
 
         // Create arrow geometry
         const arrowGeometry = new THREE.ConeGeometry(0.1, 0.5, 32);
-        const arrowMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        let arrowMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
         scene.add(arrow);
 
@@ -54,13 +82,28 @@ MathJax = {
         arrow.position.z = -5;
 
         // Animate the arrow
+        let isAnimating = true;
         function animate() {
-            requestAnimationFrame(animate);
+            if (isAnimating) {
+                requestAnimationFrame(animate);
 
-            // Rotate the arrow
-            arrow.rotation.y += 0.01;
+                // Rotate the arrow
+                arrow.rotation.y += 0.01;
 
-            renderer.render(scene, camera);
+                renderer.render(scene, camera);
+            }
+        }
+
+        // Toggle animation
+        function toggleAnimation() {
+            isAnimating = !isAnimating;
+        }
+
+        // Change arrow color
+        function changeColor() {
+            const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+            arrowMaterial = new THREE.MeshBasicMaterial({ color: color });
+            arrow.material = arrowMaterial;
         }
 
         // Set up the camera position
