@@ -9,6 +9,15 @@ body {
     overflow: hidden;
 }
 
+.title {
+    padding: 14px 20px;
+}
+
+.title span {
+    font-size: 1.5em;
+    color: white;
+}
+
 .navbar a {
     float: left;
     display: block;
