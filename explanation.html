@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Menu Bar</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- MathJax Stuff-->
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+</head>
+<body>
+    <!-- Add this to each HTML File for the navigation bar-->
+    <div class="navbar">
+        <a href="explanation.html" class= "active"> Background</a>
+        <a href="index.html">Game</a>
+    </div>
+
+    <div class="content">
+        <p>
+            This is a game designed to illustrate how dynamical decoupling (sequences of pulses) can reduce decoherence in a qubit and extend its lifetime.
+                A qubit is the fundamental unit of quantum computation, analagous to a bit in classical computation. It is represented by a two state quantum system. 
+                An arbitary state of a qubit can be represented by a statevector of the following form: 
+                $$ \ket{\psi} = \alpha \ket{0} + \beta \ket{1} $$
+            This state can be generalized to a density matrix that allows for the consideration of mixed states. The state $\ket{\psi}$ can be written out as the following density matrix: 
+                $$ \rho = \ket{\psi} \bra{\psi} $$
+            We can solve for the general evolution of the density matrix using the master equation/ GKSL equation ($\hbar = 1$):
+            $$ \dot{\rho} = - i [H, \rho]  + \sum_i \gamma_i \left( L_i \rho L^{\dagger}_i + \frac{1}{2} \left \{  L_i^{\dagger } L_i, \rho \right\}\right)$$
+            where $L_i $ are the lindbladian/jump operators that represent the dissipative dynamics associated with the interaction of a qubit with its environment. We would like to solve this equation to find the dynamics of the qubit however we first need a way to visualize the qubit. For single qubit quantum state, we can represent an arbitrary density matrix with the following form: 
+            $$ \rho = \frac{1}{2} (I + \vec{r}\cdot \vec{\sigma})$$
+            Where $\vec{r}$ represents the amplitude associated with each pauli matrix. We can plot $\vec{r}$ as a 3d vector on the bloch sphere, visualizing it in the process. We would ideally like to reexpress the GKSL equation in terms of $\vec{r}$ as that is ultimately what is used for plotting. We can start by solving for this with the GKSL with no dissipative dynamics and representing the qubit hamiltonian as a linear combination of pauli matrices: 
+            $$\hat{H} = h_0 I + \vec{h}\cdot \vec{\sigma} \qquad 
+                \dot{\rho} = - i [\hat{H}, \rho] 
+            $$
+        </p>
+
+
+    </div>
+
+</body>
+
+
+</html>
