@@ -27,6 +27,7 @@
     <!-- Main Game Script-->
     <script>
         // Set up scene
+
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 5;
@@ -36,17 +37,28 @@
         document.getElementById('threeCanvas').appendChild(renderer.domElement);
 
         // Create Bloch Sphere with less dense wireframe
-        const sphereGeometry = new THREE.SphereGeometry(2, 16, 16); // Adjust the number of segments here
+        const bloch_sphere_radius = 2;
+        const sphereGeometry = new THREE.SphereGeometry(bloch_sphere_radius, 16, 16); // Adjust the number of segments here
         const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
         const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         scene.add(sphere);
 
         // Create Arrow
+        /*
         const arrowGeometry = new THREE.CylinderGeometry(0, 0.05, 0.3, 20, 1);
         const arrowMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         const arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
         arrow.position.set(2, 0, 0); // Initial position of the arrow
         scene.add(arrow);
+        */
+        const dir = new THREE.Vector3( 1, 2, 0 );
+        dir.normalize();
+        const origin = new THREE.Vector3( 0, 0, 0 );
+        const length = bloch_sphere_radius;
+        const hex = 0xffff00;
+        const arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
+        scene.add( arrowHelper );
+
 
         // Add axes
         const axesHelper = new THREE.AxesHelper(5);
@@ -66,9 +78,9 @@
             requestAnimationFrame(animate);
             // Rotate the arrow around the Bloch sphere
             const angle = Date.now() * 0.001; // Adjust speed of rotation
-            arrow.position.x = 2 * Math.cos(angle);
-            arrow.position.z = 2 * Math.sin(angle);
-            arrow.rotation.y = -angle;
+            arrowHelper.position.x = 2 * Math.cos(angle);
+            arrowHelper.position.z = 2 * Math.sin(angle);
+            arrowHelper.rotation.y = -angle;
             renderer.render(scene, camera);
         }
 
