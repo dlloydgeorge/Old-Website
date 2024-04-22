@@ -77,29 +77,49 @@
         directionalLight.position.set(5, 3, 5);
         scene.add(directionalLight);
 
+        const keyStates = {};
+        // key press stuff
+        document.addEventListener( 'keydown', ( event ) => {
+
+            keyStates[ event.code ] = true;
+
+        } );
+
+        document.addEventListener( 'keyup', ( event ) => {
+
+            keyStates[ event.code ] = false;
+
+        } );
+
+        // For Keyboard presses
+        function controls() {
+            if (keyStates['KeyX']) {
+                arrowHelper.rotation.x = Math.PI
+            }
+
+            if (keyStates['KeyY']) {
+                arrowHelper.rotation.y = Math.PI
+            }
+
+            if (keyStates['KeyZ']) {
+                arrowHelper.rotation.z = Math.PI
+            }
+
+        }
         // Function to animate the Bloch Sphere and Arrow
         function animate() {
-            requestAnimationFrame(animate);
+
             // Rotate the arrow around the Bloch sphere
             const angle = Date.now() * 0.001; // Adjust speed of rotation
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             arrowHelper.rotation.y = -angle;
+            controls();
             renderer.render(scene, camera);
+            requestAnimationFrame(animate);
         }
 
         animate();
-        document.addEventListener('keydown', function(event) {
-                    if (event.key === 'x') {
-                        arrowHelper.rotateOnAxis(Vector3(1,0,0), Math.PI);
-                    }
-                    else if (event.key === 'y') {
-                        arrowHelper.rotateOnAxis(Vector3(0,1,0), Math.PI);;
-                    }
-                    else if (event.key === 'z') {
-                        arrowHelper.rotateOnAxis(Vector3(0,0,1), Math.PI);;
-                    } 
-                });
         // Adjust rendering when window is resized
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
