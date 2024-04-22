@@ -21,8 +21,8 @@
     <div id="container">
         <div id="threeCanvas"></div>
         <div id="buttonsContainer">
-            <button onclick="toggleAnimation()">Toggle Animation</button>
-            <button onclick="changeColor()">Change Color</button>
+            <button >Toggle Animation</button>
+            <button >Change Color</button>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
 
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+        document.threeCanvas.appendChild(renderer.domElement);
 
         // Create Bloch Sphere with less dense wireframe
         const sphereGeometry = new THREE.SphereGeometry(2, 16, 16); // Adjust the number of segments here
