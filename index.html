@@ -91,13 +91,13 @@
         animate();
         document.addEventListener('keydown', function(event) {
                     if (event.key === 'x') {
-                        arrowHelper.rotation.x = Math.PI;
+                        arrowHelper.rotateOnAxis(Vector3(1,0,0), Math.PI);
                     }
                     else if (event.key === 'y') {
-                        arrowHelper.rotation.y = Math.PI;
+                        arrowHelper.rotateOnAxis(Vector3(0,1,0), Math.PI);;
                     }
                     else if (event.key === 'z') {
-                        arrowHelper.rotation.z = Math.PI;
+                        arrowHelper.rotateOnAxis(Vector3(0,0,1), Math.PI);;
                     } 
                 });
         // Adjust rendering when window is resized
