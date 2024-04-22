@@ -89,7 +89,11 @@
         }
 
         animate();
-
+        document.addEventListener('keydown', function(event) {
+                    if (event.key === 'x') {
+                        arrowHelper.rotation.y = Math.PI
+                    }
+                });
         // Adjust rendering when window is resized
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
