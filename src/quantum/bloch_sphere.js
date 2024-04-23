@@ -67,7 +67,8 @@ class BlochSphere extends BaseGroup {
     }
 
     updateBlochSphereState(axis, angle) {
-        this.statePointer.rotate(axis, new THREE.Vector3(), angle);
+        //this.statePointer.rotate(axis, new THREE.Vector3(), angle);
+        this.statePointer.rotate(axis, new THREE.Vector3(0,0,0), angle);
 
         // Update BlochSphereState
         this.blochSphereState.update(this.statePointer.theta(), this.statePointer.phi());

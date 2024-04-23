@@ -64,8 +64,8 @@ class Sphere extends BaseMesh {
         if (!properties.color) properties.color = new THREE.Color(0xFFFFFF);
         if (!properties.opacity) properties.opacity = 1.0;
 
-        if (!properties.widthSegments) properties.widthSegments = 36;
-        if (!properties.heightSegments) properties.heightSegments = 36;
+        if (!properties.widthSegments) properties.widthSegments = 18;
+        if (!properties.heightSegments) properties.heightSegments = 18;
 
         if (!properties.phiStart) properties.phiStart = 0;
         if (!properties.phiLength) properties.phiLength = Math.PI * 2;
