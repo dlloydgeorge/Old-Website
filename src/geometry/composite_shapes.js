@@ -1,16 +1,16 @@
-import * as THREE from '../libs/three/three.module.js';
+import * as THREE from '/src/libs/three/three.module.js';
 
 import {
     BaseGroup
-} from "./bases.js";
+} from "/src/geometry/bases.js";
 
 import {
     Label, Cylinder, Sphere
-} from "./basic_shapes.js";
+} from "/src/geometry/basic_shapes.js";
 
 import {
     Vector3Helpers
-} from "../math/vector3_helpers.js";
+} from "/src/math/vector3_helpers.js";
 
 
 class Axis extends BaseGroup {

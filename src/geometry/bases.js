@@ -1,4 +1,4 @@
-import * as THREE from '../libs/three/three.module.js';
+import * as THREE from '/src/libs/three/three.module.js';
 
 
 class BaseMesh extends THREE.Mesh {

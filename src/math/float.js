@@ -1,6 +1,6 @@
 import {
     PRECISION
-} from "./../constants.js";
+} from "/src/constants.js";
 
 
 class Float {

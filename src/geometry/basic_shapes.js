@@ -1,12 +1,12 @@
-import * as THREE from '../libs/three/three.module.js';
+import * as THREE from '/src/libs/three/three.module.js';
 
 import {
     CSS2DObject
-} from "../libs/three/jsm/renderers/CSS2DRenderer.js";
+} from "/src/libs/three/jsm/renderers/CSS2DRenderer.js";
 
 import {
     BaseMesh
-} from "./bases.js";
+} from "/src/geometry/bases.js";
 
 
 class Label {

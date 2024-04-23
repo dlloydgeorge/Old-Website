@@ -1,6 +1,6 @@
 import {
     Float
-} from "./float.js";
+} from "/src/math/float.js";
 
 
 class Complex {

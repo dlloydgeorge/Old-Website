@@ -1,12 +1,12 @@
-import * as THREE from '../../libs/three/three.module.js';
+import * as THREE from '/src/libs/three/three.module.js';
 
 import {
     Float
-} from "../../math/float.js";
+} from "/src/math/float.js";
 
 import {
     Complex
-} from "../../math/complex.js";
+} from "/src/math/complex.js";
 
 
 class BlochSphereState {

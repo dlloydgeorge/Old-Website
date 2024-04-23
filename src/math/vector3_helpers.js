@@ -1,8 +1,8 @@
-import * as THREE from './../libs/three/three.module.js';
+import * as THREE from '/src/libs/three/three.module.js';
 
 import {
     Float
-} from "./float.js";
+} from "/src/math/float.js";
 
 
 class Vector3Helpers {
