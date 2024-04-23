@@ -88,7 +88,7 @@
         scene.add(sphere);
         */ 
        var blochSphereStateProperties =  {
-            theta: "0.0000",
+            theta: "90.0000",
             phi: "90.0000"
         };
 
@@ -164,11 +164,11 @@
 
         // Function to animate the Bloch Sphere and Arrow
         function animate() {
-
+            
             // Rotate the arrow around the Bloch sphere
             //const angle = Date.now() * 0.001; // Adjust speed of rotation
             const angle = 0.001;
-            blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), angle);
+            blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
