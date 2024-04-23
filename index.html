@@ -43,6 +43,7 @@
             OrbitControls
         } from "/src/libs/three/jsm/controls/OrbitControls.js";
 
+        const STEPS_PER_FRAME = 5;
 
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
@@ -162,7 +163,10 @@
 
         }
         
-
+        // all mathematical operations for computing the bloch vector should go in here
+        function computeBlochVector(time){
+            
+        }
 
         // Function to animate the Bloch Sphere and Arrow
         function animate() {
@@ -170,16 +174,17 @@
             // Rotate the arrow around the Bloch sphere
             //const angle = Date.now() * 0.001; // Adjust speed of rotation
             const angle = 0.001;
-            blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
-            keyControls();
+            for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
+                keyControls();
+            }
             renderer.render(scene, camera);
             labelRenderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
-
         animate();
         // Adjust rendering when window is resized
         window.addEventListener('resize', () => {
