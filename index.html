@@ -142,7 +142,7 @@
         } );
 
         // For Keyboard presses
-        function controls() {
+        function keyControls() {
             if (keyStates['KeyX']) {
                 //arrowHelper.rotation.x = Math.PI;
                 blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), Math.PI)
@@ -170,7 +170,7 @@
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
-            controls();
+            keyControls();
             renderer.render(scene, camera);
             labelRenderer.render(scene, camera);
             requestAnimationFrame(animate);
