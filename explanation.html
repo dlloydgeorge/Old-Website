@@ -31,7 +31,7 @@
         <a href="index.html">Game</a>
         <a href="explanation.html" class= "active"> Background</a>
     </div>
-    
+
     <div class="content">
         <p>
             This is a game designed to illustrate how dynamical decoupling (sequences of pulses) can reduce decoherence in a qubit and extend its lifetime.
@@ -46,8 +46,10 @@
             $$ \rho = \frac{1}{2} (I + \vec{r}\cdot \vec{\sigma})$$
             Where $\vec{r}$ represents the amplitude associated with each pauli matrix. We can plot $\vec{r}$ as a 3d vector on the bloch sphere, visualizing it in the process. We would ideally like to reexpress the GKSL equation in terms of $\vec{r}$ as that is ultimately what is used for plotting. We can start by solving for this with the GKSL with no dissipative dynamics and representing the qubit hamiltonian as a linear combination of pauli matrices: 
             $$\hat{H} = h_0 I + \vec{h}\cdot \vec{\sigma} \qquad 
-                \dot{\rho} = - i [\hat{H}, \rho] 
+                \dot{\rho} = - i [\hat{H}, \rho] \\
+                \rightarrow \dot{\vec{r}} \cdot \vec{\sigma} = [\vec{h}\cdot \vec{\sigma}, \vec{r}\cdot \vec{\sigma}]
             $$
+              
         </p>
 
 
