@@ -62,7 +62,7 @@
 
         const light = new THREE.DirectionalLight(0xFFFFFF);
         scene.add(light)
-        
+
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -92,7 +92,7 @@
             phi: "90.0000"
         };
 
-        blochSphere = new BlochSphere(diameter / 2, {
+        const blochSphere = new BlochSphere(diameter / 2, {
             theta: blochSphereStateProperties.theta,
             phi: blochSphereStateProperties.phi,
             color: new THREE.Color(0x808080),
