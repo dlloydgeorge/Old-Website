@@ -114,7 +114,7 @@ class StatePointer extends BaseGroup {
     constructor(height, width, properties) {
         if (!properties) properties = {};
 
-        if (!properties.color) properties.color = new THREE.Color(0xFFFFFF);
+        if (!properties.color) properties.color = new THREE.Color(0x9617eb);
 
         if (!properties.pointerRadius) properties.pointerRadius = 5;
 

@@ -178,8 +178,8 @@
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
             for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
-                keyControls();
                 blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), angle);
+                keyControls();
             }
             renderer.render(scene, camera);
             labelRenderer.render(scene, camera);
