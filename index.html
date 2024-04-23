@@ -145,17 +145,17 @@
         function keyControls() {
             if (keyStates['KeyX']) {
                 //arrowHelper.rotation.x = Math.PI;
-                blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), Math.PI)
+                blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), Math.PI);
             }
 
             if (keyStates['KeyY']) {
                 //arrowHelper.rotation.y = Math.PI;
-                blochSphere.updateBlochSphereState(new THREE.Vector3(0,1,0), Math.PI)
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,1,0), Math.PI);
             }
 
             if (keyStates['KeyZ']) {
                 //arrowHelper.rotation.z = Math.PI;
-                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), Math.PI)
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), Math.PI);
             }
 
         }
@@ -166,8 +166,9 @@
         function animate() {
 
             // Rotate the arrow around the Bloch sphere
-            const angle = Date.now() * 0.001; // Adjust speed of rotation
-            blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), angle)
+            //const angle = Date.now() * 0.001; // Adjust speed of rotation
+            const angle = Date.now() * 0.001;
+            blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), angle);
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
