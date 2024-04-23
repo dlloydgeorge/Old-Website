@@ -60,9 +60,9 @@
         camera.lookAt(new THREE.Vector3(0,0,0));
         scene.add(camera);
 
-        light = new THREE.DirectionalLight(0xFFFFFF);
+        const light = new THREE.DirectionalLight(0xFFFFFF);
+        scene.add(light)
         
-
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
