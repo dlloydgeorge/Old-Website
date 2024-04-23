@@ -1,4 +1,4 @@
-import * as THREE from '../libs/three/three.module.js';
+import * as THREE from '../../libs/three/three.module.js';
 
 import {
     BaseGroup
@@ -10,7 +10,7 @@ import {
 
 import {
     CartesianAxes, StatePointer
-} from "./geometry/composite_shapes.js";
+} from "../geometry/composite_shapes.js";
 
 import {
     BlochSphereState

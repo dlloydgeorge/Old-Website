@@ -1,8 +1,8 @@
-import * as THREE from '../libs/three/three.module.js';
+import * as THREE from '../../libs/three/three.module.js';
 
 import {
     CartesianAxes
-} from "../geometry/composite_shapes.js";
+} from "../../geometry/composite_shapes.js";
 
 
 class QuantumGate {

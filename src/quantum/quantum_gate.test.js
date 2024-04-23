@@ -1,6 +1,6 @@
 import { 
     CartesianAxes 
-} from "../geometry/composite_shapes.js";
+} from "../../geometry/composite_shapes.js";
 
 import {
     QuantumGate
