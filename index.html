@@ -22,31 +22,85 @@
         <div id="threeCanvas"></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
 
     <!-- Main Game Script-->
     <script>
+        // import stuff
+        import {
+            BlochSphere
+        } from "quantum/bloch_sphere.js";
+
+        import * as THREE from 'libs/three/three.module.js';
+
+        import {
+            CSS2DRenderer
+        } from "libs/three/jsm/renderers/CSS2DRenderer.js";
+
+        import {
+            OrbitControls
+        } from "libs/three/jsm/controls/OrbitControls.js";
+
+
         // Set up scene
+        let canvas = document.getElementById("threeCanvas");
+        let canvasWidth = canvas.offsetWidth;
+        let canvasHeight = canvas.offsetHeight;
+
+        // set diameter to 80% of canvas size
+        let diameter = (Math.min(canvasWidth, canvasHeight) / 100) * 80;
+
         const scene = new THREE.Scene();
-        const FOV = 75;
-        const Aspect = window.innerWidth / window.innerHeight
-        const Near = 0.1
-        const Far = 1000
+        const FOV = 45;
+        const Aspect = canvasWidth / canvasHeight;
+        const Near = 0.1;
+        const Far = diameter * 2;
         const camera = new THREE.PerspectiveCamera(FOV, Aspect, Near, Far);
-        camera.position.set(2, 1, 5)
-        //camera.position.x = 5;
+        camera.position.set(diameter, diameter, diameter);
+        camera.lookAt(new THREE.Vector3(0,0,0));
+        scene.add(camera);
+
+        light = new THREE.DirectionalLight(0xFFFFFF);
+        
 
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('threeCanvas').appendChild(renderer.domElement);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(canvasWidth, canvasHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = 0;
+
+        canvas.appendChild(renderer.domElement);
+        canvas.appendChild(labelRenderer.domElement);
+
+        const controls = new OrbitControls(camera, labelRenderer.domElement);
+        controls.minDistance = diameter / 4;
+        controls.maxDistance = diameter * 2;
 
         // Create Bloch Sphere with less dense wireframe
+        /**
         const bloch_sphere_radius = 2;
         const sphereGeometry = new THREE.SphereGeometry(bloch_sphere_radius, 16, 16); // Adjust the number of segments here
         const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
         const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         scene.add(sphere);
+        */ 
+       var blochSphereStateProperties =  {
+            theta: "0.0000",
+            phi: "90.0000"
+        };
 
+        blochSphere = new BlochSphere(diameter / 2, {
+            theta: blochSphereStateProperties.theta,
+            phi: blochSphereStateProperties.phi,
+            color: new THREE.Color(0x808080),
+            axesLength: (diameter / 2) + ((diameter / 2) * 0.2),
+            axesWidth: 2
+        });
+
+        scene.add(blochSphere);
         // Create Arrow
         /*
         const arrowGeometry = new THREE.CylinderGeometry(0, 0.05, 0.3, 20, 1);
@@ -55,6 +109,8 @@
         arrow.position.set(2, 0, 0); // Initial position of the arrow
         scene.add(arrow);
         */
+
+        /**
         const dir = new THREE.Vector3( 1, 2, 0 );
         dir.normalize();
         const origin = new THREE.Vector3( 0, 0, 0 );
@@ -62,20 +118,12 @@
         const hex = 0xffff00;
         const arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
         scene.add( arrowHelper );
-
+        */
 
         // Add axes
+        /**
         const axesHelper = new THREE.AxesHelper(5);
         scene.add(axesHelper);
-
-        // Add ambient light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
-
-        // Add directional light
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-        directionalLight.position.set(5, 3, 5);
-        scene.add(directionalLight);
 
         const keyStates = {};
         // key press stuff
@@ -94,18 +142,21 @@
         // For Keyboard presses
         function controls() {
             if (keyStates['KeyX']) {
-                arrowHelper.rotation.x = Math.PI
+                arrowHelper.rotation.x = Math.PI;
             }
 
             if (keyStates['KeyY']) {
-                arrowHelper.rotation.y = Math.PI
+                arrowHelper.rotation.y = Math.PI;
             }
 
             if (keyStates['KeyZ']) {
-                arrowHelper.rotation.z = Math.PI
+                arrowHelper.rotation.z = Math.PI;
             }
 
         }
+        */
+
+
         // Function to animate the Bloch Sphere and Arrow
         function animate() {
 
@@ -113,9 +164,10 @@
             const angle = Date.now() * 0.001; // Adjust speed of rotation
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
-            arrowHelper.rotation.y = -angle;
-            controls();
+            //arrowHelper.rotation.y = -angle;
+            //controls();
             renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
 
