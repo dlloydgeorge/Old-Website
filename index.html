@@ -50,24 +50,24 @@
         // set diameter to 80% of canvas size
         let diameter = (Math.min(canvasWidth, canvasHeight) / 100) * 80;
 
-        const scene = new THREE.Scene();
+        let scene = new THREE.Scene();
         const FOV = 45;
         const Aspect = canvasWidth / canvasHeight;
         const Near = 0.1;
         const Far = diameter * 2;
-        const camera = new THREE.PerspectiveCamera(FOV, Aspect, Near, Far);
+        let camera = new THREE.PerspectiveCamera(FOV, Aspect, Near, Far);
         camera.position.set(diameter, diameter, diameter);
         camera.lookAt(new THREE.Vector3(0,0,0));
         scene.add(camera);
 
-        const light = new THREE.DirectionalLight(0xFFFFFF);
+        let light = new THREE.DirectionalLight(0xFFFFFF);
         scene.add(light)
 
-        const renderer = new THREE.WebGLRenderer();
+        let renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         
-        const labelRenderer = new CSS2DRenderer();
+        let labelRenderer = new CSS2DRenderer();
         labelRenderer.setSize(canvasWidth, canvasHeight);
         labelRenderer.domElement.style.position = 'absolute';
         labelRenderer.domElement.style.top = 0;
@@ -75,7 +75,7 @@
         canvas.appendChild(renderer.domElement);
         canvas.appendChild(labelRenderer.domElement);
 
-        const controls = new OrbitControls(camera, labelRenderer.domElement);
+        let controls = new OrbitControls(camera, labelRenderer.domElement);
         controls.minDistance = diameter / 4;
         controls.maxDistance = diameter * 2;
 
@@ -92,7 +92,7 @@
             phi: "90.0000"
         };
 
-        const blochSphere = new BlochSphere(diameter / 2, {
+        let blochSphere = new BlochSphere(diameter / 2, {
             theta: blochSphereStateProperties.theta,
             phi: blochSphereStateProperties.phi,
             color: new THREE.Color(0x808080),
