@@ -1,20 +1,20 @@
-import * as THREE from '../../libs/three/three.module.js';
+import * as THREE from '/src/libs/three/three.module.js';
 
 import {
     BaseGroup
-} from "../geometry/bases.js";
+} from "/src/geometry/bases.js";
 
 import {
     Sphere
-} from "../geometry/basic_shapes.js";
+} from "/src/geometry/basic_shapes.js";
 
 import {
     CartesianAxes, StatePointer
-} from "../geometry/composite_shapes.js";
+} from "/src/geometry/composite_shapes.js";
 
 import {
     BlochSphereState
-} from "./bloch_sphere_state.js";
+} from "/src/quantum/bloch_sphere_state.js";
 
 
 class BlochSphere extends BaseGroup {
