@@ -43,7 +43,7 @@
             OrbitControls
         } from "/src/libs/three/jsm/controls/OrbitControls.js";
 
-        const STEPS_PER_FRAME = 5;
+        const STEPS_PER_FRAME = 10;
 
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
@@ -178,8 +178,8 @@
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
             for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
-                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
                 keyControls();
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
             }
             renderer.render(scene, camera);
             labelRenderer.render(scene, camera);
