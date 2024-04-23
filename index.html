@@ -68,7 +68,7 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         
         let labelRenderer = new CSS2DRenderer();
-        labelRenderer.setSize(canvasWidth, canvasHeight);
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
         labelRenderer.domElement.style.position = 'absolute';
         labelRenderer.domElement.style.top = 0;
 
