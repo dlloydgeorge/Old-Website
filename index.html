@@ -43,7 +43,7 @@
             OrbitControls
         } from "/src/libs/three/jsm/controls/OrbitControls.js";
 
-        const STEPS_PER_FRAME = 10;
+        const STEPS_PER_FRAME = 5;
 
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
@@ -98,7 +98,7 @@
         var blochSphere = new BlochSphere(diameter / 2, {
             theta: blochSphereStateProperties.theta,
             phi: blochSphereStateProperties.phi,
-            color: new THREE.Color(0x9617eb),
+            color: new THREE.Color(0xFFFFFF),
             axesLength: (diameter / 2) + ((diameter / 2) * 0.2),
             axesWidth: 2
         });

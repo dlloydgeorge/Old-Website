@@ -25,7 +25,7 @@ class BlochSphere extends BaseGroup {
         if (!properties.phi) properties.phi = "90.0000";
 
         if (!properties.color) properties.color = new THREE.Color(0xFFFFFF);
-        if (!properties.opacity) properties.opacity = 0.9;
+        if (!properties.opacity) properties.opacity = 0.7;
 
         if (!properties.axesLength) properties.axesLength = radius + (radius * 0.1);
         if (!properties.axesWidth) properties.axesWidth = 1;
@@ -51,7 +51,7 @@ class BlochSphere extends BaseGroup {
 
         // Create StatePointer
         this.statePointer = new StatePointer(radius, 3, {
-            color: new THREE.Color(0xFFFFFF),
+            color: new THREE.Color(0x9617eb),
             position: new THREE.Vector3(0, radius / 2, 0)
         });
 
