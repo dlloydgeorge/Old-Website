@@ -10,7 +10,7 @@ import {
 
 import {
     CartesianAxes, StatePointer
-} from "../geometry/composite_shapes.js";
+} from "./geometry/composite_shapes.js";
 
 import {
     BlochSphereState
