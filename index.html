@@ -124,7 +124,9 @@
         /**
         const axesHelper = new THREE.AxesHelper(5);
         scene.add(axesHelper);
+        */ 
 
+        
         const keyStates = {};
         // key press stuff
         document.addEventListener( 'keydown', ( event ) => {
@@ -142,19 +144,22 @@
         // For Keyboard presses
         function controls() {
             if (keyStates['KeyX']) {
-                arrowHelper.rotation.x = Math.PI;
+                //arrowHelper.rotation.x = Math.PI;
+                blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), Math.PI)
             }
 
             if (keyStates['KeyY']) {
-                arrowHelper.rotation.y = Math.PI;
+                //arrowHelper.rotation.y = Math.PI;
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,1,0), Math.PI)
             }
 
             if (keyStates['KeyZ']) {
-                arrowHelper.rotation.z = Math.PI;
+                //arrowHelper.rotation.z = Math.PI;
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), Math.PI)
             }
 
         }
-        */
+        
 
 
         // Function to animate the Bloch Sphere and Arrow
@@ -165,7 +170,7 @@
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
-            //controls();
+            controls();
             renderer.render(scene, camera);
             labelRenderer.render(scene, camera);
             requestAnimationFrame(animate);
