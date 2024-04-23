@@ -98,7 +98,7 @@
         var blochSphere = new BlochSphere(diameter / 2, {
             theta: blochSphereStateProperties.theta,
             phi: blochSphereStateProperties.phi,
-            color: new THREE.Color(0x808080),
+            color: new THREE.Color(0x9617eb),
             axesLength: (diameter / 2) + ((diameter / 2) * 0.2),
             axesWidth: 2
         });
@@ -178,7 +178,7 @@
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
             for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
-                blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), angle);
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
                 keyControls();
             }
             renderer.render(scene, camera);

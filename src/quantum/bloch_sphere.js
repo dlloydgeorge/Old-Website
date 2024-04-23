@@ -73,6 +73,12 @@ class BlochSphere extends BaseGroup {
         // Update BlochSphereState
         this.blochSphereState.update(this.statePointer.theta(), this.statePointer.phi());
     }
+
+    // allows for amplitude changes in the bloch vector
+    updateBlochSphereStateCR() {
+
+
+    }
 }
 
 export {
