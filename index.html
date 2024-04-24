@@ -115,12 +115,17 @@
 
         function animate(){
 
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+
         }
 
 
         function initGame(event){
             initScene();
             createBlochSphere();
+            animate();
         }
 
         window.addEventListener('load', initGame, false);
