@@ -45,7 +45,8 @@
 
         import {
             GUI
-        } from "/src/libs/three/jsm/gui/lil-gui.module.min.js"
+        } from "/src/libs/three/jsm/gui/lil-gui.module.min.js";
+
         const STEPS_PER_FRAME = 5;
 
 
@@ -55,7 +56,9 @@
         T1: the amplitude dampening time (in seconds)
         T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: "filler", T1: 2.0, T2: 4.0}
+        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: "filler", T1: 2.0, T2: 4.0};
+
+
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
         let canvasWidth = canvas.offsetWidth;
@@ -92,6 +95,10 @@
         var controls = new OrbitControls(camera, labelRenderer.domElement);
         controls.minDistance = diameter / 4;
         controls.maxDistance = diameter * 2;
+
+        const gui_params = {h_x: 0.0};
+        const gui = new GUI();
+        gui.add(gui_params, 0, 1).step(.01)
 
         // Create Bloch Sphere with less dense wireframe
         /**
