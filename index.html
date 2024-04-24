@@ -61,12 +61,18 @@
         var canvas, scene, fieldOfView, aspectRatio, nearPlane, farPlane,
         camera, renderer, controls;
         
+        var BlochVectorArrow;
+
         var HEIGHT, WIDTH, diameter;
 
 
         // 
         function startGame(){
-            
+            game.status = "Playing"
+        }
+
+        function resetGame(){
+            game = {status: "WaitingForPlayer"};
         }
         
         // initialize the scene
@@ -98,14 +104,27 @@
 
         }
 
+        function handleKeyDown(event){
+            if (event.code=="Enter"){
+                if (game.status== "WaitingForPlayer"){
+                    startGame();
+                    console.log(game.status)
+                }
+
+            }
+                
+        }
+
         // create the bloch sphere in the scene
         function createBlochSphere(){
             const XaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(1,0,0), origin, diameter / 2, 0xff0000);
             scene.add(XaxisArrow);
             const YaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,1,0), origin, diameter / 2, 0x00ff00);
             scene.add(YaxisArrow);
-            const ZaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,0,1), origin, diameter / 2, 0x00ff00);
+            const ZaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,0,1), origin, diameter / 2, 0x0000ff);
             scene.add(ZaxisArrow); 
+
+            BlochVectorArrow = new THREE.ArrowHelper( new THREE.Vector3(1,1,0), origin, diameter / 2, 0xffff00);
         }
 
         // handles changes to window if it is resized
@@ -117,22 +136,30 @@
 
         }
 
-        function animate(){
+        function loop(){
 
+            if (game.status == "playing"){
+                const angle2 = Date.now() * 0.001;
+                BlochVectorArrow.rotation.y = -angle2;
+
+            }
 
             renderer.render(scene, camera);
-            requestAnimationFrame(animate);
+            requestAnimationFrame(loop);
 
         }
 
 
-        function initGame(event){
+        function init(event){
             initScene();
             createBlochSphere();
-            renderer.render(scene, camera);
+            
+
+            document.addEventListener('keydown', handleKeyDown, false);
+            loop();
         }
 
-        window.addEventListener('load', initGame, false);
+        window.addEventListener('load', init, false);
         /**
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
