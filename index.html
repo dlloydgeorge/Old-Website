@@ -57,6 +57,8 @@
         const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: "filler", T1: 2.0, T2: 4.0};
         //const bloch_sphere_radius = 
         const origin = new THREE.Vector3(0,0,0);
+        const bloch_vec_mag_threshold = 0.5;
+        var bloch_vec_mag = qubitSystemInfo.InitialState.length();
         var deltaTime = 0;
         var newTime = new Date().getTime();
         var oldTime = new Date().getTime();
@@ -75,7 +77,7 @@
         }
 
         function resetGame(){
-            game = {status: "WaitingForPlayer"};
+            game = {status: "WaitingForPlayer", QSI: qubitSystemInfo};
         }
         
         // initialize the scene
@@ -141,6 +143,15 @@
 
         }
 
+        function updateBlochVector(deltaT){
+            
+            let blochVec = BlochVectorArrow.
+             
+            
+
+
+        }
+
         function loop(){
             newTime = new Date().getTime();
             deltaTime = newTime - oldTime;
@@ -148,9 +159,8 @@
 
             if (game.status == "Playing"){
                 const angle2 = deltaTime * 0.001;
-                console.log(angle2);
-                BlochVectorArrow.rotation.y = -angle2;
-
+                BlochVectorArrow.rotation.x = -angle2;
+                
             }
 
             renderer.render(scene, camera);
