@@ -126,6 +126,7 @@
             const dir = new THREE.Vector3(1,1,0)
             dir.normalize()
             BlochVectorArrow = new THREE.ArrowHelper( dir, origin, diameter / 2, 0xffff00);
+            
         }
 
         // handles changes to window if it is resized
@@ -139,7 +140,7 @@
 
         function loop(){
 
-            if (game.status == "playing"){
+            if (game.status == "Playing"){
                 const angle2 = Date.now() * 0.001;
                 BlochVectorArrow.rotation.y = -angle2;
 
