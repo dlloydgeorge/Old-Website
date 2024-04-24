@@ -76,7 +76,7 @@ class BlochSphere extends BaseGroup {
 
     // allows for amplitude changes in the bloch vector
     updateBlochSphereStateCR() {
-        this.statePointer.
+        
 
     }
 }
