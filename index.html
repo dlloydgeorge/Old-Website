@@ -45,6 +45,14 @@
 
         const STEPS_PER_FRAME = 5;
 
+
+        /**
+        This is the main object for the qubit system
+        the initial state is defined using the bloch vector
+        */
+        const qubitSystemInfo = {InitialState: THREE.Vector3(1,0,0),Hamiltonian: "filler", T1: 2, T2: 4
+
+        }
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
         let canvasWidth = canvas.offsetWidth;
@@ -164,7 +172,7 @@
         }
         
         // all mathematical operations for computing the bloch vector should go in here
-        function computeBlochVector(time){
+        function computeNewBlochVector(time){
             
         }
 
@@ -173,7 +181,7 @@
             
             // Rotate the arrow around the Bloch sphere
             //const angle = Date.now() * 0.001; // Adjust speed of rotation
-            const angle = 0.001;
+            const angle = 0.000;
             //arrowHelper.position.x = 2 * Math.cos(angle);
             //arrowHelper.position.z = 2 * Math.sin(angle);
             //arrowHelper.rotation.y = -angle;
