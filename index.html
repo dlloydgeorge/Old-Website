@@ -68,7 +68,7 @@
 
         // 
         function startGame(){
-            game.status = "Playing"
+            game.status = "Playing";
         }
 
         function resetGame(){
@@ -108,7 +108,7 @@
             if (event.code=="Enter"){
                 if (game.status== "WaitingForPlayer"){
                     startGame();
-                    console.log(game.status)
+                    console.log(game.status);
                 }
 
             }
@@ -123,8 +123,8 @@
             scene.add(YaxisArrow);
             const ZaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,0,1), origin, diameter / 2, 0x0000ff);
             scene.add(ZaxisArrow); 
-            const dir = new THREE.Vector3(1,1,0)
-            dir.normalize()
+            const dir = new THREE.Vector3(1,1,0);
+            dir.normalize();
             BlochVectorArrow = new THREE.ArrowHelper( dir, origin, diameter / 2, 0xffff00);
             
         }
@@ -142,7 +142,7 @@
 
             if (game.status == "Playing"){
                 const angle2 = Date.now() * 0.001;
-                console.log(angle2)
+                console.log(angle2);
                 BlochVectorArrow.rotation.y = -angle2;
 
             }
