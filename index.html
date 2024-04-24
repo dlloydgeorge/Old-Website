@@ -133,7 +133,8 @@
             let sphereMaterial = new THREE.MeshPhongMaterial({color: new THREE.Color(0xFFFFFF), opacity: 0.7});
             sphereMaterial.transparent = true;
             sphereMaterial.side = THREE.DoubleSide;
-            let spherMEsh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            let sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            scene.add(sphereMesh)
             
             const dir = new THREE.Vector3(1,1,0);
             dir.normalize();
