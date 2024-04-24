@@ -180,10 +180,10 @@
         function animate() {
             
             // Rotate the arrow around the Bloch sphere
-            const angle2 = Date.now() * 0.001; // Adjust speed of rotation
+            const angle2 = Date.now() * 0.005; // Adjust speed of rotation
             const angle = 0.0001;
-            arrowHelper.position.x = 2 * Math.cos(angle2) * Math.exp(-angle2);
-            arrowHelper.position.z = 2 * Math.sin(angle2);
+            arrowHelper.position.x = (diameter / 2) * Math.cos(angle2) * Math.exp(-angle2);
+            arrowHelper.position.z = (diameter / 2) * Math.sin(angle2);
             //arrowHelper.rotation.y = -angle;
             for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
                 blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
