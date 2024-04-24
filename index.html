@@ -142,7 +142,7 @@
             let lineSegmentsMaterial = new THREE.LineBasicMaterial({color: new THREE.Color(0x808080),linewidth: 1});
             let sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
-            lineSegments = new THREE.LineSegments(lineSegmentsGeometry, lineSegmentsMaterial);
+            let lineSegments = new THREE.LineSegments(lineSegmentsGeometry, lineSegmentsMaterial);
             sphereMesh.add(lineSegments);
             scene.add(sphereMesh);
 
