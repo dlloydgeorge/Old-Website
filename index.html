@@ -48,8 +48,6 @@
         } from "/src/libs/three/jsm/gui/lil-gui.module.min.js";
 
         const STEPS_PER_FRAME = 5;
-
-
         /**
         This is the main object for the qubit system
         the initial state is defined using the bloch vector definition 
@@ -57,8 +55,76 @@
         T2: Phase dampening time (in seconds)
         */
         const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: "filler", T1: 2.0, T2: 4.0};
+        //const bloch_sphere_radius = 
+        const origin = new THREE.Vector3(0,0,0);
+        var game;
+        var canvas, scene, fieldOfView, aspectRatio, nearPlane, farPlane,
+        camera, renderer, controls;
+        
+        var HEIGHT, WIDTH, diameter;
 
 
+        // 
+        function startGame(){
+            
+        }
+        
+        // initialize the scene
+        function initScene(){
+            canvas = document.getElementById("threeCanvas");
+            WIDTH = canvas.offsetWidth;
+            HEIGHT = canvas.offsetHeight;
+            diameter = (Math.min(WIDTH, HEIGHT) / 100) * 80;
+
+            scene = new THREE.scene();
+
+            fieldOfView = 45;
+            aspectRatio = WIDTH / HEIGHT;
+            nearPlane = 0.1;
+            farPlane = diameter * 2;
+            camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
+            camera.position.set(diameter, diameter, diameter);
+            camera.lookAt(new THREE.Vector3(0,0,0));
+            scene.add(camera);
+
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            canvas.appendChild(renderer.domElement);
+            //canvas.appendChild(labelRenderer.domElement);
+
+            window.addEventListener('resize', windowResize, false);
+
+        }
+
+        // create the bloch sphere in the scene
+        function createBlochSphere(){
+            const XaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(1,0,0), origin, diameter / 2, 0xffff00);
+            scene.add(XaxisArrow); 
+        }
+
+        // handles changes to window if it is resized
+        function windowResize(){
+            HEIGHT = canvas.offsetHeight, WIDTH = canvas.offsetWidth;
+            renderer.setSize(WIDTH, HEIGHT);
+            camera.aspect = WIDTH / HEIGHT;
+            camera.updateProjectionMatrix();
+
+        }
+
+        function animate(){
+
+        }
+
+
+        function initGame(event){
+            initScene();
+            createBlochSphere();
+        }
+
+        window.addEventListener('load', initGame, false);
+        /**
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
         let canvasWidth = canvas.offsetWidth;
@@ -108,6 +174,8 @@
         const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         scene.add(sphere);
         */ 
+
+        /**
        var blochSphereStateProperties =  {
             theta: "90.0000",
             phi: "90.0000"
@@ -122,6 +190,8 @@
         });
 
         scene.add(blochSphere);
+        */
+
         // Create Arrow
         /*
         const arrowGeometry = new THREE.CylinderGeometry(0, 0.05, 0.3, 20, 1);
@@ -131,7 +201,7 @@
         scene.add(arrow);
         */
 
-        
+        /**
         const dir = new THREE.Vector3( 1, 1, 0 );
         dir.normalize();
         const origin = new THREE.Vector3( 0, 0, 0 );
@@ -139,7 +209,7 @@
         const hex = 0xffff00;
         const arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
         scene.add( arrowHelper );
-        
+        */
 
         // Add axes
         /**
@@ -147,7 +217,7 @@
         scene.add(axesHelper);
         */ 
 
-        
+        /**
         const keyStates = {};
         // key press stuff
         document.addEventListener( 'keydown', ( event ) => {
@@ -213,6 +283,8 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             labelRenderer.setSize(window.innerWidth, window.innerHeight);
         });
+        */
+        
     </script>
 </body>
 </html>
