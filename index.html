@@ -122,7 +122,7 @@
         */
 
         
-        const dir = new THREE.Vector3( 1, 2, 0 );
+        const dir = new THREE.Vector3( 1, 0, 0 );
         dir.normalize();
         const origin = new THREE.Vector3( 0, 0, 0 );
         const length = diameter / 2;
@@ -156,17 +156,17 @@
         function keyControls() {
             if (keyStates['KeyX']) {
                 //arrowHelper.rotation.x = Math.PI;
-                blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), Math.PI);
+                blochSphere.updateBlochSphereState(new THREE.Vector3(1,0,0), Math.PI / 2);
             }
 
             if (keyStates['KeyY']) {
                 //arrowHelper.rotation.y = Math.PI;
-                blochSphere.updateBlochSphereState(new THREE.Vector3(0,1,0), Math.PI);
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,1,0), Math.PI / 2);
             }
 
             if (keyStates['KeyZ']) {
                 //arrowHelper.rotation.z = Math.PI;
-                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), Math.PI);
+                blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), Math.PI / 2);
             }
 
         }
@@ -180,7 +180,7 @@
         function animate() {
             
             // Rotate the arrow around the Bloch sphere
-            const angle2 = Date.now() * 0.005; // Adjust speed of rotation
+            const angle2 = Date.now() * 0.001; // Adjust speed of rotation
             const angle = 0.0001;
             //arrowHelper.position.x = (diameter / 2) * Math.cos(angle2) * Math.exp(-angle2);
             //arrowHelper.position.z = (diameter / 2) * Math.sin(angle2);
