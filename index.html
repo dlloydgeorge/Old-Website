@@ -135,7 +135,7 @@
             sphereMaterial.side = THREE.DoubleSide;
             let sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
             scene.add(sphereMesh)
-            
+
             const dir = new THREE.Vector3(1,1,0);
             dir.normalize();
             BlochVectorArrow = new THREE.ArrowHelper( dir, origin, (diameter / 2) , 0xffff00);
@@ -168,7 +168,8 @@
             if (game.status == "Playing"){
                 //const angle2 = deltaTime * 0.001;
                 //BlochVectorArrow.rotation.x = -angle2;
-                //BlochVectorArrow.
+                let arrowLength = BlochVectorArrow.length;
+                BlochVectorArrow.length.set(.99 * arrowLength)
                 
             }
 
