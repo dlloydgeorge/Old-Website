@@ -49,7 +49,25 @@
                 \dot{\rho} = - i [\hat{H}, \rho] \\
                 \rightarrow \dot{\vec{r}} \cdot \vec{\sigma} = [\vec{h}\cdot \vec{\sigma}, \vec{r}\cdot \vec{\sigma}]
             $$
-              
+            \\
+            \\
+            
+            Decoherence arises due to unwanted coupling of a qubit to its environment. While this decoherence can take many forms, two commonly cited measures for coherence are the $T_1$ and $T_2$ times. 
+            $T_1$ characterizes an amplitude damping process,  which is the time for a qubit to settle into its lower energy basis state ( generally $\ket{0}$) after being prepared in the higher energy ($\ket{1}$) state. 
+            This process is dissipative, as the energy of the excited state gets transfered to the environment. 
+            For an arbitrary bloch vector $\vec{r}$, the transformation is given as follows: 
+            $$
+                \vec{r} = (r_x, r_y, r_z) \rightarrow (r_x \sqrt{1 - \gamma}, r_y \sqrt{1 - \gamma}, r_z (1 - \gamma)) \qquad \gamma = 1 - e^{-t / T_1}
+            $$
+            The $T_1$ characterizes an exponential decrease in the population in the excited state. 
+            $T_2$ characterizes a more subtle and uniquely quantum form of decoherence, phase damping. 
+            Unlike amplitude damping, phase damping does not result in a loss of energy from the qubit but rather a loss 
+            of information about the relative phases between the two basis states of the qubit. The transformation 
+            is characterized by the following transformation on the bloch vector: 
+            $$
+                \vec{r} = (r_x, r_y, r_z) \rightarrow (r_x \sqrt{1 - \lambda}, r_y \sqrt{1 - \lambda}, r_z ) \qquad \sqrt{1 - \lambda} = e^{-t / 2T_2}
+            $$
+            These two processes are what the game engine uses to model the decoherence of the qubit. 
         </p>
 
 
