@@ -122,15 +122,22 @@
 
         // create the bloch sphere in the scene
         function createBlochSphere(){
-            const XaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(1,0,0), origin, diameter / 2, 0xff0000);
+            const XaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(1,0,0), origin, (diameter / 2) * 1.2, 0xff0000);
             scene.add(XaxisArrow);
-            const YaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,1,0), origin, diameter / 2, 0x00ff00);
+            const YaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,1,0), origin, (diameter / 2) * 1.2, 0x00ff00);
             scene.add(YaxisArrow);
-            const ZaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,0,1), origin, diameter / 2, 0x0000ff);
+            const ZaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,0,1), origin, (diameter / 2) * 1.2, 0x0000ff);
             scene.add(ZaxisArrow); 
+
+            let sphereGeometry = new THREE.SphereGeometry(diameter / 2, 18, 18, 0, Math.PI * 2, 0,Math.PI);
+            let sphereMaterial = new THREE.MeshPhongMaterial({color: new THREE.Color(0xFFFFFF), opacity: 0.7});
+            sphereMaterial.transparent = true;
+            sphereMaterial.side = THREE.DoubleSide;
+            let spherMEsh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            
             const dir = new THREE.Vector3(1,1,0);
             dir.normalize();
-            BlochVectorArrow = new THREE.ArrowHelper( dir, origin, diameter / 2, 0xffff00);
+            BlochVectorArrow = new THREE.ArrowHelper( dir, origin, (diameter / 2) , 0xffff00);
             scene.add(BlochVectorArrow)
         }
 
@@ -158,8 +165,9 @@
             oldTime = newTime;
 
             if (game.status == "Playing"){
-                const angle2 = deltaTime * 0.001;
-                BlochVectorArrow.rotation.x = -angle2;
+                //const angle2 = deltaTime * 0.001;
+                //BlochVectorArrow.rotation.x = -angle2;
+                //BlochVectorArrow.
                 
             }
 
