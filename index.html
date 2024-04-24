@@ -184,9 +184,9 @@
             const angle = 0.0001;
             //arrowHelper.position.x = (diameter / 2) * Math.cos(angle2) * Math.exp(-angle2);
             //arrowHelper.position.z = (diameter / 2) * Math.sin(angle2);
-            arrowHelper.rotation.y = -angle2;
-            let arrowLength = (diameter / 2) * Math.exp(-angle2);
-            arrowHelper.setLength(arrowLength, arrowLength / 10, arrowLength / 30)
+            //arrowHelper.rotation.y = -angle2;
+            let arrowLength = (diameter / 2) * Math.exp(-angle2 * .01);
+            arrowHelper.setLength(arrowLength, arrowLength / 10, arrowLength / 30);
             for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
                 blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);
                 keyControls();
