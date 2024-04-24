@@ -48,11 +48,11 @@
 
         /**
         This is the main object for the qubit system
-        the initial state is defined using the bloch vector
+        the initial state is defined using the bloch vector definition 
+        T1: the amplitude dampening time (in seconds)
+        T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: THREE.Vector3(1,0,0),Hamiltonian: "filler", T1: 2, T2: 4
-
-        }
+        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: "filler", T1: 2.0, T2: 4.0}
         // Set up scene
         let canvas = document.getElementById("threeCanvas");
         let canvasWidth = canvas.offsetWidth;
