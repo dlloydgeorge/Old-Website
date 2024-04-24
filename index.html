@@ -121,15 +121,15 @@
         scene.add(arrow);
         */
 
-        /**
+        
         const dir = new THREE.Vector3( 1, 2, 0 );
         dir.normalize();
         const origin = new THREE.Vector3( 0, 0, 0 );
-        const length = bloch_sphere_radius;
+        const length = diameter / 2;
         const hex = 0xffff00;
         const arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
         scene.add( arrowHelper );
-        */
+        
 
         // Add axes
         /**
@@ -180,10 +180,10 @@
         function animate() {
             
             // Rotate the arrow around the Bloch sphere
-            //const angle = Date.now() * 0.001; // Adjust speed of rotation
-            const angle = 0.000;
-            //arrowHelper.position.x = 2 * Math.cos(angle);
-            //arrowHelper.position.z = 2 * Math.sin(angle);
+            const angle2 = Date.now() * 0.001; // Adjust speed of rotation
+            const angle = 0.0001;
+            arrowHelper.position.x = 2 * Math.cos(angle2) * Math.exp(-angle2);
+            arrowHelper.position.z = 2 * Math.sin(angle2);
             //arrowHelper.rotation.y = -angle;
             for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
                 blochSphere.updateBlochSphereState(new THREE.Vector3(0,0,1), angle);

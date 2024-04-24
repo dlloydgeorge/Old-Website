@@ -145,6 +145,13 @@ class StatePointer extends BaseGroup {
         this.parent.worldToLocal(this.position);
     }
 
+    // experimental function for changing the bloch vector's amplitude and position
+    moveState(){
+        this.parent.localToWorld(this.position);
+        
+
+        this.parent.worldToLocal(this.position);
+    }
     theta() {
         return Vector3Helpers.angleBetweenVectors(CartesianAxes.ZAxis, this.position, CartesianAxes.ZAxis);
     }
