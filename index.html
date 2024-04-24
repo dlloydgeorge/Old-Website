@@ -123,8 +123,9 @@
             scene.add(YaxisArrow);
             const ZaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,0,1), origin, diameter / 2, 0x0000ff);
             scene.add(ZaxisArrow); 
-
-            BlochVectorArrow = new THREE.ArrowHelper( new THREE.Vector3(1,1,0), origin, diameter / 2, 0xffff00);
+            const dir = new THREE.Vector3(1,1,0)
+            dir.normalize()
+            BlochVectorArrow = new THREE.ArrowHelper( dir, origin, diameter / 2, 0xffff00);
         }
 
         // handles changes to window if it is resized
