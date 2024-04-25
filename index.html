@@ -179,7 +179,7 @@
             const RdotH = BV.dot(h_dir);
             const newBV = Math.cos(Theta);
             console.log("BV before: " + BV.toArray().toString());
-            BV.applyAxisAngle(Theta);
+            BV.applyAxisAngle(h_dir, Theta);
             console.log("BV after: " + BV.toArray().toString());
             bloch_vec_math.set(BV);
 
