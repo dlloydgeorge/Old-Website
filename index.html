@@ -174,9 +174,10 @@
 
             // This is for the pure state dynamics with a time independent hamiltonian so no dissipation
             let BV = bloch_vec_math;
-            const h_dir = qubitSystemInfo.Hamiltonian.normalize();
+            let h_dir = qubitSystemInfo.Hamiltonian;
+            h_dir.normalize();
             let h_mag = qubitSystemInfo.Hamiltonian.length();
-            //console.log(h_mag);
+            console.log(h_mag);
             let Theta = 2.0 * h_mag * deltaT;
             console.log("Hamiltonian magnitude: " + h_mag.toString() + "  deltaT: " + deltaT.toString() + "Theta: " + Theta.toString());
             let RcrossH_term = BV.cross(h_dir);
