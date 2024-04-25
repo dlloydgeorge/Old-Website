@@ -82,6 +82,10 @@
         function resetGame(){
             game = {status: "WaitingForPlayer", QSI: qubitSystemInfo};
         }
+
+        function stopGame(){
+            game.status = "GameEnded";
+        }
         
         // initialize the scene
         function initScene(){
@@ -194,7 +198,7 @@
                 //const angle2 = deltaTime * 0.001;
                 //BlochVectorArrow.rotation.x = -angle2;
                 let deltaTime_s = deltaTime / 1000.0; //convert from ms to s
-                console.log(bloch_vec_math);
+                console.log(bloch_vec_math.toArray().toString());
                 updateBlochVector(deltaTime_s);
                 BlochVectorArrow.setDirection(bloch_vec_math);
             }
