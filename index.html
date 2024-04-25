@@ -61,7 +61,7 @@
         const origin = new THREE.Vector3(0,0,0);
         var bloch_vec_mag = qubitSystemInfo.InitialState.length();
         var bloch_vec_math = qubitSystemInfo.InitialState.normalize();
-        //console.log("Initial Bloch Vec: " + bloch_vec_math.toArray().toString());
+        console.log("Initial Bloch Vec: " + bloch_vec_math.toArray().toString(), "Initial Ham: " + qubitSystemInfo.Hamiltonian.toArray().toString());
         var deltaTime = 0;
         var newTime = new Date().getTime();
         var oldTime = new Date().getTime();
@@ -176,16 +176,14 @@
             let BV = bloch_vec_math;
             const h_dir = qubitSystemInfo.Hamiltonian.normalize();
             let h_mag = qubitSystemInfo.Hamiltonian.length();
-            console.log(h_mag);
+            //console.log(h_mag);
             let Theta = 2.0 * h_mag * deltaT;
             console.log("Hamiltonian magnitude: " + h_mag.toString() + "  deltaT: " + deltaT.toString() + "Theta: " + Theta.toString());
             let RcrossH_term = BV.cross(h_dir);
             //RcrossH_term.sc
             const RdotH = BV.dot(h_dir);
             const newBV = Math.cos(Theta);
-            console.log("BV before: " + BV.toArray().toString());
             BV.applyAxisAngle(h_dir, Theta);
-            console.log("BV after: " + BV.toArray().toString());
             //bloch_vec_math.set(BV.toArray());
             bloch_vec_math = BV;
 
@@ -215,7 +213,7 @@
             resetGame();
             initScene();
             createBlochSphere();
-            console.log("bloch vec before loop: " + bloch_vec_math.toString());
+            console.log("bloch vec before loop: " + bloch_vec_math.toArray().toString());
 
             document.addEventListener('keydown', handleKeyDown, false);
             loop();
