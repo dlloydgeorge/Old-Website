@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="eng">   
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,11 +54,12 @@
         T1: the amplitude dampening time (in seconds)
         T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: "filler", T1: 2.0, T2: 4.0};
+        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: new THREE.Vector3(2,2,0), T1: 2.0, T2: 4.0};
         //const bloch_sphere_radius = 
         const origin = new THREE.Vector3(0,0,0);
         const bloch_vec_mag_threshold = 0.5;
         var bloch_vec_mag = qubitSystemInfo.InitialState.length();
+        var bloch_vec_math = qubitSystemInfo.InitialState.normalize();
         var deltaTime = 0;
         var newTime = new Date().getTime();
         var oldTime = new Date().getTime();
@@ -147,10 +148,9 @@
             sphereMesh.add(lineSegments);
             scene.add(sphereMesh);
 
-            const dir = new THREE.Vector3(1,1,0);
-            dir.normalize();
-            BlochVectorArrow = new THREE.ArrowHelper( dir, origin, (diameter / 2) , 0xffff00);
-            scene.add(BlochVectorArrow)
+            
+            BlochVectorArrow = new THREE.ArrowHelper(bloch_vec_math, origin, (diameter / 2) , 0xffff00);
+            scene.add(BlochVectorArrow);
         }
 
         // handles changes to window if it is resized
@@ -165,10 +165,18 @@
         // update the mathematical bloch vector
         function updateBlochVector(deltaT){
             
-            
-             
-            
 
+            // This is for the pure state dynamics with a time independent hamiltonian so no dissipation
+            let BV = bloch_vec_math;
+            const h_dir = qubitSystemInfo.Hamiltonian.normalize();
+            const h_mag = qubitSystemInfo.Hamiltonian.length();
+            const Theta = 2 * h_mag * deltaT;
+            let RcrossH_term = BV.cross(h_dir);
+            //RcrossH_term.sc
+            const RdotH = BV.dot(h_dir);
+            const newBV = Math.cos(Theta);
+            BV.applyAxisAngle(Theta);
+            bloch_vec_math.set(BV);
 
         }
 
@@ -181,7 +189,7 @@
                 //const angle2 = deltaTime * 0.001;
                 //BlochVectorArrow.rotation.x = -angle2;
                 updateBlochVector(deltaTime);
-                
+                BlochVectorArrow.setDirection(bloch_vec_math);
             }
 
             renderer.render(scene, camera);
