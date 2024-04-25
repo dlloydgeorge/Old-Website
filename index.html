@@ -54,7 +54,7 @@
         T1: the amplitude dampening time (in seconds)
         T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: new THREE.Vector3(0,0,1), Hamiltonian: new THREE.Vector3(.5,.5,0), T1: 2.0, T2: 4.0};
+        let qubitSystemInfo = {InitialState: new THREE.Vector3(0,0,1), Hamiltonian: new THREE.Vector3(.5,.5,0), T1: 2.0, T2: 4.0};
         const bloch_vec_mag_threshold = 0.5; // the game will end if the bloch vector shrinks to this size
 
 
@@ -125,7 +125,7 @@
 
         // create the bloch sphere in the scene
         function createBlochSphere(){
-            const axisLength = (diameter / 2) * 1.2
+            const axisLength = (diameter / 2) * 1.2;
             const XaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(1,0,0), origin, axisLength, 0xff0000, axisLength * .1);
             scene.add(XaxisArrow);
             const YaxisArrow = new THREE.ArrowHelper( new THREE.Vector3(0,1,0), origin, axisLength, 0x00ff00, axisLength * .1);
@@ -209,7 +209,7 @@
             resetGame();
             initScene();
             createBlochSphere();
-            
+            console.log("bloch vec before loop: " + bloch_vec_math.toString());
 
             document.addEventListener('keydown', handleKeyDown, false);
             loop();
