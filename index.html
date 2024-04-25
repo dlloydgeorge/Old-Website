@@ -55,11 +55,13 @@
         T2: Phase dampening time (in seconds)
         */
         const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: new THREE.Vector3(.5,.5,0), T1: 2.0, T2: 4.0};
-        //const bloch_sphere_radius = 
+        const bloch_vec_mag_threshold = 0.5; // the game will end if the bloch vector shrinks to this size
+
+
         const origin = new THREE.Vector3(0,0,0);
-        const bloch_vec_mag_threshold = 0.5;
         var bloch_vec_mag = qubitSystemInfo.InitialState.length();
         var bloch_vec_math = qubitSystemInfo.InitialState.normalize();
+        console.log("Initial Bloch Vec: " + bloch_vec_mag.toArray().toString());
         var deltaTime = 0;
         var newTime = new Date().getTime();
         var oldTime = new Date().getTime();
