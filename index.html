@@ -54,7 +54,7 @@
         T1: the amplitude dampening time (in seconds)
         T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: new THREE.Vector3(.5,.5,0), T1: 2.0, T2: 4.0};
+        const qubitSystemInfo = {InitialState: new THREE.Vector3(0,0,1), Hamiltonian: new THREE.Vector3(.5,.5,0), T1: 2.0, T2: 4.0};
         const bloch_vec_mag_threshold = 0.5; // the game will end if the bloch vector shrinks to this size
 
 
@@ -171,7 +171,8 @@
             // This is for the pure state dynamics with a time independent hamiltonian so no dissipation
             let BV = bloch_vec_math;
             const h_dir = qubitSystemInfo.Hamiltonian.normalize();
-            const h_mag = qubitSystemInfo.Hamiltonian.length();
+            let h_mag = qubitSystemInfo.Hamiltonian.length();
+            console.log("Hamiltonian magnitude: " + h_mag.toString() + "  deltaT: " + deltaT.toString())
             const Theta = 2 * h_mag * deltaT;
             let RcrossH_term = BV.cross(h_dir);
             //RcrossH_term.sc
