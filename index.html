@@ -200,7 +200,6 @@
                 //const angle2 = deltaTime * 0.001;
                 //BlochVectorArrow.rotation.x = -angle2;
                 let deltaTime_s = deltaTime / 1000.0; //convert from ms to s
-                console.log(bloch_vec_math.toArray().toString());
                 updateBlochVector(deltaTime_s);
                 BlochVectorArrow.setDirection(bloch_vec_math);
             }
@@ -215,9 +214,10 @@
             resetGame();
             initScene();
             createBlochSphere();
-            console.log("bloch vec before loop: " + bloch_vec_math.toArray().toString());
+            
 
             document.addEventListener('keydown', handleKeyDown, false);
+            console.log("Hamiltonian before loop: " + qubitSystemInfo.Hamiltonian.toArray().toString());
             loop();
         }
 
