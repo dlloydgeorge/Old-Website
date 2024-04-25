@@ -172,13 +172,15 @@
             let BV = bloch_vec_math;
             const h_dir = qubitSystemInfo.Hamiltonian.normalize();
             let h_mag = qubitSystemInfo.Hamiltonian.length();
-            console.log("Hamiltonian magnitude: " + h_mag.toString() + "  deltaT: " + deltaT.toString())
-            const Theta = 2 * h_mag * deltaT;
+            let Theta = 2.0 * h_mag * deltaT;
+            console.log("Hamiltonian magnitude: " + h_mag.toString() + "  deltaT: " + deltaT.toString() + "Theta: " + Theta.toString());
             let RcrossH_term = BV.cross(h_dir);
             //RcrossH_term.sc
             const RdotH = BV.dot(h_dir);
             const newBV = Math.cos(Theta);
+            console.log("BV before: " + BV.toArray().toString());
             BV.applyAxisAngle(Theta);
+            console.log("BV after: " + BV.toArray().toString());
             bloch_vec_math.set(BV);
 
         }
