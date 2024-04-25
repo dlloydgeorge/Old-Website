@@ -183,10 +183,10 @@
             
             let Theta = 2.0 * h_mag * deltaT;
             console.log("Hamiltonian magnitude: " + h_mag.toString() + "  deltaT: " + deltaT.toString() + "Theta: " + Theta.toString());
-            let RcrossH_term = BV.cross(h_dir);
+            //let RcrossH_term = BV.cross(h_dir);
             //RcrossH_term.sc
-            const RdotH = BV.dot(h_dir);
-            const newBV = Math.cos(Theta);
+            //const RdotH = BV.dot(h_dir);
+            //const newBV = Math.cos(Theta);
             BV.applyAxisAngle(h_dir, Theta);
             //bloch_vec_math.set(BV.toArray());
             bloch_vec_math = BV;
