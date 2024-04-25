@@ -49,19 +49,22 @@
 
         const STEPS_PER_FRAME = 5;
         /**
-        This is the main object for the qubit system
         the initial state is defined using the bloch vector definition 
         T1: the amplitude dampening time (in seconds)
         T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: new THREE.Vector3(0,0,Math.PI), T1: 2.0, T2: 4.0};
         const bloch_vec_mag_threshold = 0.5; // the game will end if the bloch vector shrinks to this size
-
+        const QubitT1 = 10.0; 
+        const QubitT2 = 2.0;
+        const QubitHamiltonian = new THREE.Vector3(0,0, Math.PI); 
+        let QubitInitialState = new THREE.Vector3(1,0,0);
 
         const origin = new THREE.Vector3(0,0,0);
-        var bloch_vec_mag = qubitSystemInfo.InitialState.length();
-        var bloch_vec_math = qubitSystemInfo.InitialState.normalize();
-        console.log("Initial Bloch Vec: " + bloch_vec_math.toArray().toString(), "Initial Ham: " + qubitSystemInfo.Hamiltonian.toArray().toString());
+        var bloch_vec_math = QubitInitialState;
+        bloch_vec_math.normalize();
+
+        var bloch_vec_mag = bloch_vec_math.length();
+        //console.log("Initial Bloch Vec: " + bloch_vec_math.toArray().toString(), "Initial Ham: );
         var deltaTime = 0;
         var newTime = new Date().getTime();
         var oldTime = new Date().getTime();
@@ -80,7 +83,7 @@
         }
 
         function resetGame(){
-            game = {status: "WaitingForPlayer", QSI: qubitSystemInfo};
+            game = {status: "WaitingForPlayer"};
         }
 
         function stopGame(){
@@ -174,7 +177,7 @@
 
             // This is for the pure state dynamics with a time independent hamiltonian so no dissipation
             let BV = bloch_vec_math;
-            let h_dir = qubitSystemInfo.Hamiltonian;
+            let h_dir = QubitHamiltonian;
             const h_mag = h_dir.length();
             h_dir.normalize();
             
