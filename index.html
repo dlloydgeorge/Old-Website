@@ -191,8 +191,9 @@
             if (game.status == "Playing"){
                 //const angle2 = deltaTime * 0.001;
                 //BlochVectorArrow.rotation.x = -angle2;
+                let deltaTime_s = deltaTime / 1000.0; //convert from ms to s
                 console.log(bloch_vec_math);
-                updateBlochVector(deltaTime);
+                updateBlochVector(deltaTime_s);
                 BlochVectorArrow.setDirection(bloch_vec_math);
             }
 
