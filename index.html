@@ -61,7 +61,7 @@
         const origin = new THREE.Vector3(0,0,0);
         var bloch_vec_mag = qubitSystemInfo.InitialState.length();
         var bloch_vec_math = qubitSystemInfo.InitialState.normalize();
-        console.log("Initial Bloch Vec: " + bloch_vec_mag.toArray().toString());
+        console.log("Initial Bloch Vec: " + bloch_vec_math.toArray().toString());
         var deltaTime = 0;
         var newTime = new Date().getTime();
         var oldTime = new Date().getTime();
