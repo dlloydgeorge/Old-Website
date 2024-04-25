@@ -54,7 +54,7 @@
         T1: the amplitude dampening time (in seconds)
         T2: Phase dampening time (in seconds)
         */
-        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: new THREE.Vector3(2,2,0), T1: 2.0, T2: 4.0};
+        const qubitSystemInfo = {InitialState: new THREE.Vector3(1,0,0), Hamiltonian: new THREE.Vector3(.5,.5,0), T1: 2.0, T2: 4.0};
         //const bloch_sphere_radius = 
         const origin = new THREE.Vector3(0,0,0);
         const bloch_vec_mag_threshold = 0.5;
@@ -188,6 +188,7 @@
             if (game.status == "Playing"){
                 //const angle2 = deltaTime * 0.001;
                 //BlochVectorArrow.rotation.x = -angle2;
+                console.log(bloch_vec_math);
                 updateBlochVector(deltaTime);
                 BlochVectorArrow.setDirection(bloch_vec_math);
             }
