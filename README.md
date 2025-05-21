@@ -1,2 +1,2 @@
 # dlloydgeorge.github.io
-Welcome to my website!
+This is my old website. It had some experimental quantum computing games I was developing
